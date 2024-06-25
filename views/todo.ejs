@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,16 +87,24 @@
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 4px;
+            width: 100%;
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
-
 <body>
-    <h1>Todo List - Made for Batch 6</h1>
+    <h1>Todo List - Made By Priyansh Vaishnav</h1>
     <main>
         <ul>
             <% todolist.forEach(function(todo, index) { %>
@@ -118,5 +125,4 @@
         </form>
     </main>
 </body>
-
 </html>
