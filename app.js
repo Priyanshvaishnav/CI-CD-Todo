@@ -5,11 +5,13 @@ const sanitizer = require('sanitizer');
 const app = express();
 const port = 8000;
 
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
+
 // Middleware to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Middleware to override HTTP methods
-// https://github.com/expressjs/method-override#custom-logic
 app.use(methodOverride((req, res) => {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         const method = req.body._method;
@@ -22,7 +24,7 @@ let todolist = [];
 
 // Display the to-do list and the form
 app.get('/todo', (req, res) => {
-    res.render('todo.ejs', {
+    res.render('todo', {
         todolist,
         clickHandler: "func1();"
     });
@@ -51,7 +53,7 @@ app.get('/todo/:id', (req, res) => {
     const todoIdx = req.params.id;
     const todo = todolist[todoIdx];
     if (todo) {
-        res.render('edititem.ejs', {
+        res.render('edititem', {
             todoIdx,
             todo,
             clickHandler: "func1();"
@@ -78,7 +80,7 @@ app.use((req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Todolist running on http://0.0.0.0:${port}`);
+    console.log(`Todolist running on http://localhost:${port}`);
 });
 
 // Export app
